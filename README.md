@@ -2,8 +2,8 @@
 This is my implementation of classic video game [**Snake**](https://en.wikipedia.org/wiki/Snake_(video_game_genre)) in Python game library [**PyGame**](https://pyga.me/)
 
 # TODO
-- add body to snake (linked list?)
-  - growing when eating fruit
+- [x] add body to snake (linked list? - NOPE simple list was enough)
+  - [x] growing when eating fruit
 - add game over
   - collision detection
   - largest snake possible
