@@ -21,7 +21,7 @@ player_pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
 direction_x = 0
 direction_y = 0
 
-
+# function for generationg random position of food
 def placeFood(width: int, height: int, squareSize: int, player_pos = pygame.Vector2) -> pygame.Vector2:
     x = player_pos.x
     y = player_pos.y
@@ -62,15 +62,17 @@ while running:
     # fill the screen with a color
     screen.fill("darkolivegreen3")
 
-    # Food
+    # Drawing FOOD
     pygame.draw.rect(screen, "red", (food_pos.x, food_pos.y, squareSize, squareSize))
 
-    # Player
+    # Drawing PLAYER
     pygame.draw.rect(screen, "darkolivegreen", (player_pos.x, player_pos.y, squareSize, squareSize))
 
+    # Eating food
     if food_pos.x == player_pos.x and food_pos.y == player_pos.y:
         food_pos = placeFood(n_width, n_height, squareSize, player_pos)
     
+    # Drawing GRID
     for vertical in range(0, screenWidth, squareSize):
         pygame.draw.line(screen, "darkolivegreen4", (vertical, 0), (vertical, screenHeight), width=4)
 
@@ -78,7 +80,7 @@ while running:
         pygame.draw.line(screen, "darkolivegreen4", (0, horizontal), (screenWidth, horizontal), width=4)
 
     # Screen wrapping 
-    # Handles when player goes out of bounds
+        # Handles when player goes out of bounds
     if player_pos.x >= screenWidth:
         player_pos.x = 0
     
@@ -91,7 +93,7 @@ while running:
     if player_pos.y < 0:
         player_pos.y = screenHeight - squareSize
 
-    # flip() the display to put your work on screen
+    # flip() the display
     pygame.display.flip()
 
     clock.tick(6)
