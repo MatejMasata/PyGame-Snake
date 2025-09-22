@@ -69,24 +69,31 @@ def grow_snake(snake_body = list[pygame.Vector2]) -> pygame.Vector2:
     
 
 while running:
-    # poll for events
-    # pygame.QUIT event means the user clicked X to close your window
+    # EVENTS
+    can_change_direction = True
     for event in pygame.event.get():
+        # pygame.QUIT event means the user clicked X to close your window
         if event.type == pygame.QUIT:
             running = False
-        if event.type == pygame.KEYDOWN:
+
+        # Keyboard events for controlling the snake
+        if event.type == pygame.KEYDOWN and can_change_direction:
             if event.key == pygame.K_w and direction_y != 1:
                 direction_y = -1
                 direction_x = 0
+                can_change_direction = False
             elif event.key == pygame.K_s and direction_y != -1:
                 direction_y = 1
                 direction_x = 0
+                can_change_direction = False
             elif event.key == pygame.K_a and direction_x != 1:
                 direction_x = -1
                 direction_y = 0
+                can_change_direction = False
             elif event.key == pygame.K_d and direction_x != -1:
                 direction_x = 1
                 direction_y = 0
+                can_change_direction = False
 
     if direction_x != 0 or direction_y != 0:
 
