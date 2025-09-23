@@ -53,7 +53,7 @@ def is_fruit_eaten(food_pos, snake_body):
     else:
         return False
     
-def grow_snake(snake_body = list[pygame.Vector2]) -> pygame.Vector2:
+def grow_snake(snake_body: list[pygame.Vector2]) -> pygame.Vector2:
 
     tail_direction_x = snake_body[-1].x - snake_body[-2].x
     tail_direction_y = snake_body[-1].y - snake_body[-2].y
